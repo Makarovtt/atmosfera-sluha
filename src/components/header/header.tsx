@@ -18,7 +18,7 @@ export function Header() {
 				<div className="text-xl text-cyan-500 hidden lg:block">
 					опыт с <span className="text-4xl font-extrabold italic">2009</span> г.
 				</div>
-				<div className="shrink-0 hidden sm:block">
+				<div className="shrink-0 hidden md:block">
 					<div className="hidden md:block">
 						<MySelect
 							color="primary"
@@ -64,8 +64,9 @@ export function Header() {
 						</div>
 					</div>
 				</div>
-				<div className="block sm:hidden">
-					<Menu size={50} color="#888888" className="ml-10" />
+				<div className="flex justify-start items-end gap-2 font-semibold ml-10 md:hidden">
+					<Navigation className="stroke-1 text-cyan-500" />
+					Волгоград
 				</div>
 			</div>
 		</header>
