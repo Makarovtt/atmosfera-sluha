@@ -15,13 +15,13 @@ interface Ifamilies {
 	id: string;
 	family: string;
 	check: boolean;
-	childes: Ichildes[];
+	childes: Ichildes[] | [];
 }
 interface Vendor {
-	id: string | number;
-	vendor: string;
+	id?: string | number;
+	vendor?: string;
 	image?: string | null;
-	families: Ifamilies[];
+	families?: Ifamilies[] | [];
 }
 
 export function CatalogMain({ dataMenuMain }: any) {
@@ -76,7 +76,7 @@ export function CatalogMain({ dataMenuMain }: any) {
 										<span className="text-lg">{iFamili.family}</span>
 										<div
 											className={clsx(
-												"ml-4",
+												"ml-4 transition-all",
 												iFamili.check ? "block" : "hidden",
 											)}
 										>

@@ -4,13 +4,19 @@ const { nextui } = require("@nextui-org/react");
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-	content: ["./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"],
+	content: [
+		"./src/components/**/*.{ts,tsx}",
+		"./src/app/**/*.{ts,tsx}",
+		"./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+	],
 	theme: {
 		extend: {
 			color: "red",
 		},
 		screens: {
 			"min-screen": "320px",
+
+			"small-screen": "500px",
 
 			sm: "640px",
 			// => @media (min-width: 640px) { ... }
@@ -20,6 +26,8 @@ const config: Config = {
 
 			lg: "990px",
 			// => @media (min-width: 1024px) { ... }
+
+			"lg-1000": "1100px",
 
 			xl: "1280px",
 			// => @media (min-width: 1280px) { ... }
