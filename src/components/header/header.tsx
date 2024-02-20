@@ -15,7 +15,7 @@ export function Header() {
 				<div className="ml-1">
 					<Image src={Logo} alt="" />
 				</div>
-				<div className="text-xl text-cyan-500 w-2/5 hidden lg:block">
+				<div className="text-xl text-cyan-500 w-full max-w-[725px] hidden lg:block">
 					<SearchHeader />
 				</div>
 				<div className="shrink-0 hidden lg:block">
