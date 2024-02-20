@@ -5,36 +5,50 @@ interface Props {
 }
 export function MenuMainTop({ className }: Props) {
 	return (
-		<Navbar shouldHideOnScroll className={clsx("", className)}>
+		<Navbar
+			shouldHideOnScroll
+			maxWidth="xl"
+			className={clsx("max-w-7xl w-full mx-auto", className)}
+		>
 			{/* <NavbarBrand>
 			<AcmeLogo />
 			<p className="font-bold text-inherit">ACME</p>
 		</NavbarBrand> */}
-			<NavbarContent className="hidden sm:flex gap-4" justify="center">
+
+			<NavbarContent justify="center" className="w-64 grow-0">
+				<NavbarItem className="w-full">
+					<Button
+						as={Link}
+						size="lg"
+						color="primary"
+						href="#"
+						variant="flat"
+						className="w-full"
+					>
+						Каталог
+					</Button>
+				</NavbarItem>
+			</NavbarContent>
+			<NavbarContent className="hidden w-4/6 sm:flex gap-6" justify="end">
 				<NavbarItem>
 					<Link color="foreground" href="#">
-						Features
+						О компании
 					</Link>
 				</NavbarItem>
 				<NavbarItem isActive>
 					<Link href="#" aria-current="page">
-						Customers
+						Услуги
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
 					<Link color="foreground" href="#">
-						Integrations
+						Выезд специалиста на дом
 					</Link>
 				</NavbarItem>
-			</NavbarContent>
-			<NavbarContent justify="end">
-				<NavbarItem className="hidden lg:flex">
-					<Link href="#">Login</Link>
-				</NavbarItem>
 				<NavbarItem>
-					<Button as={Link} color="primary" href="#" variant="flat">
-						Sign Up
-					</Button>
+					<Link color="foreground" href="#">
+						Контакты
+					</Link>
 				</NavbarItem>
 			</NavbarContent>
 		</Navbar>

@@ -5,7 +5,12 @@ export const MySelect = extendVariants(Select, {
 		// <- modify/add variants
 		color: {
 			brand: {
-				base: "text-[#56C8E8] bg-[#56C8E8]",
+				base: "text-[#56C8E8] bg-yellow-200",
+			},
+			none: {
+				base: "text-[#56C8E8]",
+				trigger:
+					"bg-white shadow-none min-h-2 py-1 pl-1 h-auto data-[hover]:bg-white data-[hover]:underline",
 			},
 		},
 		removeLabel: {
@@ -16,7 +21,7 @@ export const MySelect = extendVariants(Select, {
 		},
 		textSize: {
 			base: {
-				value: "text-xl",
+				value: "text-base",
 			},
 		},
 		value: {

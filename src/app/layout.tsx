@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import { Providers } from "./providers";
+import MenuMain from "@/components/menu";
+import clsx from "clsx";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +21,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="light">
-			<body className={inter.className}>
+			<body className={clsx("h-[2000px]", inter.className)}>
 				<Header />
+				<MenuMain />
 				<Providers>{children}</Providers>
 			</body>
 		</html>
