@@ -54,7 +54,7 @@ export function CatalogMain({ dataMenuMain }: any) {
 							return (
 								<div
 									key={iFamili.id}
-									className="flex items-start justify-start gap-5 px-5 py-2"
+									className="flex items-start justify-start gap-5 px-5"
 								>
 									{iFamili.childes.length ? (
 										<div className="mt-1">
@@ -73,7 +73,9 @@ export function CatalogMain({ dataMenuMain }: any) {
 									)}
 
 									<div>
-										<span className="text-lg">{iFamili.family}</span>
+										<span className="text-lg text-cyan-800">
+											{iFamili.family}
+										</span>
 										<div
 											className={clsx(
 												"ml-4 transition-all",
@@ -82,7 +84,10 @@ export function CatalogMain({ dataMenuMain }: any) {
 										>
 											{iFamili.childes?.map((iChild: Ichildes) => {
 												return (
-													<div key={iChild.id} className="my-2">
+													<div
+														key={iChild.id}
+														className="mb-2 text-gray-500"
+													>
 														{iChild.child}
 													</div>
 												);

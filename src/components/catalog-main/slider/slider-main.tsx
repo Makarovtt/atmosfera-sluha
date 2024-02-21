@@ -20,7 +20,7 @@ export function SliderMain() {
 					clickable: true,
 				}}
 				modules={[Autoplay, Pagination]}
-				className="w-full h-[277px] border"
+				className="w-full h-[277px] 2xl:h-[350px] 3xl:h-[450px] border"
 			>
 				<SwiperSlide className="bg-[url('/images/slider-main/slide-1.jpg')] bg-cover bg-left sm:bg-center lg-1000:bg-right  relative">
 					<div

@@ -1,22 +1,18 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
+import { Link, Button } from "@nextui-org/react";
 import clsx from "clsx";
 interface Props {
 	className?: React.ComponentProps<"div">["className"];
 }
 export function MenuMainTop({ className }: Props) {
 	return (
-		<Navbar
-			shouldHideOnScroll
-			maxWidth="xl"
-			className={clsx("max-w-7xl w-full mx-auto", className)}
+		<nav
+			className={clsx(
+				"justify-between items-center max-w-[2400px] md:mx-10 2xl:mx-20 4xl:mx-auto mx-auto",
+				className,
+			)}
 		>
-			{/* <NavbarBrand>
-			<AcmeLogo />
-			<p className="font-bold text-inherit">ACME</p>
-		</NavbarBrand> */}
-
-			<NavbarContent justify="center" className="w-64 grow-0">
-				<NavbarItem className="w-full">
+			<div className="w-64 grow-0 justify-center">
+				<div className="w-full">
 					<Button
 						as={Link}
 						size="lg"
@@ -27,30 +23,31 @@ export function MenuMainTop({ className }: Props) {
 					>
 						Каталог
 					</Button>
-				</NavbarItem>
-			</NavbarContent>
-			<NavbarContent className="hidden w-4/6 sm:flex gap-6" justify="end">
-				<NavbarItem>
+				</div>
+			</div>
+
+			<div className="hidden gap-6 justify-end sm:flex">
+				<div>
 					<Link color="foreground" href="#">
 						О компании
 					</Link>
-				</NavbarItem>
-				<NavbarItem isActive>
-					<Link href="#" aria-current="page">
+				</div>
+				<div>
+					<Link href="#" aria-current="page" className="text-cyan-700">
 						Услуги
 					</Link>
-				</NavbarItem>
-				<NavbarItem>
+				</div>
+				<div>
 					<Link color="foreground" href="#">
 						Выезд специалиста на дом
 					</Link>
-				</NavbarItem>
-				<NavbarItem>
+				</div>
+				<div>
 					<Link color="foreground" href="#">
 						Контакты
 					</Link>
-				</NavbarItem>
-			</NavbarContent>
-		</Navbar>
+				</div>
+			</div>
+		</nav>
 	);
 }
