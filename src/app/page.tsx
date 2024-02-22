@@ -61,7 +61,7 @@ export default async function Home() {
 		<>
 			<section>
 				<div className="flex justify-start items-start max-w-[2400px] mx-5 md:mx-10 2xl:mx-20 4xl:mx-auto my-10">
-					<div className="w-64 grow-0 shrink-0 hidden lg-1000:block">
+					<div className="w-64 grow-0 shrink-0 hidden lg-1000:block sticky top-[120px]">
 						<CatalogMain dataMenuMain={dataMenuMain} />
 					</div>
 					<div className="lg-1000:ml-10 w-full">
