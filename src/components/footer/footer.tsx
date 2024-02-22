@@ -8,7 +8,7 @@ import BzCekh from "@/public/images/footer/logo-bzcekh.svg";
 export function Footer() {
 	return (
 		<>
-			<footer className=" bg-cyan-700 py-10 hidden lg:block">
+			<footer className=" bg-cyan-700 py-10 hidden lg-1000:block">
 				<div
 					className="max-w-[2400px] mx-5 my-4 flex flex-col justify-between items-start
                             min-min-screen:flex-row 
@@ -81,7 +81,7 @@ export function Footer() {
 					</div>
 				</div>
 			</footer>
-			<div className="block h-20 lg:hidden"></div>
+			<div className="block h-20 lg-1000:hidden"></div>
 		</>
 	);
 }

@@ -4,8 +4,8 @@ import { MenuMainTop } from "./menu-main-top";
 export function MenuMain() {
 	return (
 		<>
-			<MenuMainTop className={"hidden lg:flex"} />
-			<MenuMainBottom className={"flex lg:hidden"} />
+			<MenuMainTop className={"hidden lg-1000:flex"} />
+			<MenuMainBottom className={"flex lg-1000:hidden"} />
 		</>
 	);
 }

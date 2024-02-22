@@ -15,7 +15,7 @@ export function SearchHeader() {
 			<Input
 				isClearable
 				radius="lg"
-				className="z-[60] relative rounded-2xl"
+				className="z-[60] relative rounded-2xl w-full"
 				classNames={{
 					label: "text-black/50 dark:text-white/90",
 					input: [
@@ -27,7 +27,7 @@ export function SearchHeader() {
 					innerWrapper: "bg-transparent",
 					inputWrapper: [
 						"data-[hover]:shadow-md",
-						"bg-slate-100",
+						"bg-white",
 						"data-[hover]:bg-white",
 						"data-[focus]:bg-white",
 						"focus:bg-white",
