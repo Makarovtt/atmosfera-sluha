@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 import MenuMain from "@/components/menu";
 import clsx from "clsx";
 import axios from "axios";
+import { Footer } from "@/components/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="light">
-			<body className={clsx("h-[2000px]", inter.className)}>
+			<body className={clsx("", inter.className)}>
 				<Header />
 				<MenuMain />
 				<Providers>{children}</Providers>
+				<Footer />
 			</body>
 		</html>
 	);

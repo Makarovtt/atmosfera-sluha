@@ -11,7 +11,7 @@ export function MenuMainBottom({ className }: Props) {
 	return (
 		<div
 			className={clsx(
-				"bottom-0 left-0 right-0 fixed py-4 px-4",
+				"bottom-0 left-0 right-0 fixed py-4 px-4 bg-white z-20",
 				"justify-between items-end",
 				"shadow-[0_-2px_8px_#00000026]",
 				className,

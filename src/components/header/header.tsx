@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import Logo from "@/public/images/header/logo.svg";
+import Logo from "@/public/images/header/Logotype.svg";
 import Link from "next/link";
 import { Navigation, Phone } from "lucide-react";
 import { SearchHeader } from "./search-header";

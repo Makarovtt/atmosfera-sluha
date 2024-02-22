@@ -1,7 +1,11 @@
 import { CatalogMain } from "@/components/catalog-main/catalog-main";
 import { SliderMain } from "@/components/catalog-main/slider/slider-main";
+import { VitrinaMain } from "@/components/vitrina/vitrina-main";
+import axios from "axios";
 
-const url = "https://server.atmosfera-sluha.ru/sluhmarketonline/app_brands.php";
+const urlGetBrands = "https://server.atmosfera-sluha.ru/sluhmarketonline/app_brands.php";
+const urlGetApparats =
+	"https://server.atmosfera-sluha.ru/sluhmarketonline/app_apparats_with_price.php";
 
 interface Ichildes {
 	id: string;
@@ -24,8 +28,8 @@ interface Idata {
 	brands_list: Vendor[];
 }
 
-async function getData(url: string): Promise<Idata> {
-	const res = await fetch(url);
+async function getBrands(urlGetBrands: string): Promise<Idata> {
+	const res = await fetch(urlGetBrands);
 
 	if (!res.ok) {
 		throw new Error("Failed to fetch data");
@@ -34,10 +38,24 @@ async function getData(url: string): Promise<Idata> {
 	return jsonData;
 }
 
-export default async function Home() {
-	const data = await getData(url);
+async function getApparats(urlGetApparats: string): Promise<any> {
+	const changeCheckAllData = {
+		type: "Акции",
+		nmbPage: 1,
+		limit: 20,
+	};
+	const { data } = await axios.post(
+		urlGetApparats,
+		`getModulePromo=${JSON.stringify(changeCheckAllData)}`,
+	);
+	return data;
+}
 
-	const dataMenuMain: Vendor[] = data.brands_list;
+export default async function Home() {
+	const dataBrands = await getBrands(urlGetBrands);
+	const dataApparats = await getApparats(urlGetApparats);
+
+	const dataMenuMain: Vendor[] = dataBrands.brands_list;
 
 	return (
 		<>
@@ -49,6 +67,9 @@ export default async function Home() {
 					<div className="lg:ml-10 w-full">
 						<div>
 							<SliderMain />
+						</div>
+						<div>
+							<VitrinaMain dataVitrinaMain={dataApparats} />
 						</div>
 					</div>
 				</div>
