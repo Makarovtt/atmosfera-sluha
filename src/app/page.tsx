@@ -26,7 +26,7 @@ export default async function Home() {
 				<SliderMain />
 			</div>
 			<div>
-				<VitrinaMain dataVitrinaMain={dataApparats} />
+				<VitrinaMain />
 			</div>
 		</>
 	);

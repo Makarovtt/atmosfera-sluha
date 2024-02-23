@@ -3,8 +3,12 @@
 import { Button } from "@nextui-org/react";
 import { Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import Loader from "@/public/default-apparat.png";
 
 export function ApparatItem({ dataItem }: any) {
+	const [errorImage, setErrorImage] = useState(false);
+
 	function modificationPriceView(price: string) {
 		const newPrice = new Intl.NumberFormat("ru-Ru", {
 			style: "currency",
@@ -15,13 +19,17 @@ export function ApparatItem({ dataItem }: any) {
 	}
 	return (
 		<div className="max-w-72 w-full min-w-40 p-3 border border-slate-200 rounded-xl bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
-			<div className="h-auto flex justify-center items-center">
+			<div className="flex justify-center items-center h-[200px] relative">
 				<Image
-					src={dataItem.picture}
+					src={errorImage ? Loader : dataItem.picture}
 					alt={dataItem.title}
-					width={300}
-					height={250}
-					className="w-4/5 h-auto"
+					placeholder="blur"
+					blurDataURL="/preloader-img.svg"
+					onError={() => setErrorImage(true)}
+					fill
+					priority
+					sizes="100vw, 700px"
+					className="w-full h-auto object-contain"
 				/>
 			</div>
 			<div>{dataItem.title}</div>
