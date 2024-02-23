@@ -1,7 +1,7 @@
 "use client";
 import { Link, Button } from "@nextui-org/react";
 import clsx from "clsx";
-import { SearchHeader } from "../header/search-header";
+import { SearchHeader } from "./search-header";
 import { Heart, Kanban, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 interface Props {
