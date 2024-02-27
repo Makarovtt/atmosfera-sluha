@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
-import { Providers } from "./providers";
 import clsx from "clsx";
 import { Footer } from "@/components/footer/footer";
 import { CatalogMain } from "@/components/catalog-main/catalog-main";
 import { MenuMain } from "@/components/header/menu-main";
+import { Providers } from "@/redux/provider";
+import { UIProvider } from "./ui-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,19 +49,16 @@ export const metadata: Metadata = {
 	description: "Федеральная сеть магазинов по продаже слуховых аппаратов!",
 };
 
-export default async function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	const dataBrands = await getBrands(urlGetBrands);
-
 	const dataMenuMain: Vendor[] = dataBrands.brands_list;
 
 	return (
 		<html lang="en" className="light">
 			<body className={clsx("", inter.className)}>
-				<Header />
+				<Providers>
+					<Header />
+				</Providers>
 				<MenuMain />
 				<section>
 					<div className="flex justify-start items-start max-w-[2400px] mx-5 md:mx-10 2xl:mx-20 4xl:mx-auto my-10">
@@ -72,7 +70,9 @@ export default async function RootLayout({
 						</div>
 					</div>
 				</section>
-				<Footer />
+				<Providers>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);

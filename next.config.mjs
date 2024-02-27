@@ -1,14 +1,42 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: [
-			"www.radugazvukov.ru",
-			"domsluha.ru",
-			"tehnikasluha.ru",
-			"magazin-sluha.ru",
-			"mirsluha.ru",
-			"r-sluh.ru",
-			"images.zakupka.com",
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "**.radugazvukov.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "domsluha.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "tehnikasluha.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "magazin-sluha.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "mirsluha.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "r-sluh.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "**.zakupka.com",
+				port: "",
+			},
 		],
 	},
 };

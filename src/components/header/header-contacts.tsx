@@ -2,8 +2,14 @@
 import { Navigation, Phone } from "lucide-react";
 import { SelectHeader } from "./select-header";
 import Link from "next/link";
+import { CONTACTS_DATA } from "../contacts/data";
+import { useAppSelector } from "@/redux/hooks";
+
+const contactsData = CONTACTS_DATA;
 
 export function HeaderContacts() {
+	const idCountry = useAppSelector((state) => state.countryReducer.value);
+	const country = contactsData.find((item) => item.id === idCountry);
 	return (
 		<>
 			<div className="hidden justify-start items-center gap-2 lg:flex">
@@ -29,7 +35,7 @@ export function HeaderContacts() {
 						className="text-cyan-700 text-base hover:underline"
 					>
 						{" "}
-						8 (902) 655-45-30
+						{country?.phone[0]}
 					</Link>
 				</div>
 			</div>

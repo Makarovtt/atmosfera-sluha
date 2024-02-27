@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Logo from "@/public/images/header/Logotype.svg";
 import { Navigation, Phone } from "lucide-react";

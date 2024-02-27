@@ -1,11 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Logo from "@/public/images/footer/logotype-footer.svg";
 import { Navigation, Phone } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import BzCekh from "@/public/images/footer/logo-bzcekh.svg";
+import { useAppSelector } from "@/redux/hooks";
+import { CONTACTS_DATA } from "@/components/contacts/data";
+
+const contactsData = CONTACTS_DATA;
 
 export function Footer() {
+	const idCountry = useAppSelector((state) => state.countryReducer.value);
+	const country = contactsData.find((item) => item.id === idCountry);
 	return (
 		<>
 			<footer className=" bg-cyan-700 py-10 hidden lg-1000:block">
@@ -19,20 +27,29 @@ export function Footer() {
 					<div>
 						<Image src={Logo} alt="" />
 						<div className="mt-10">
+							<div className="text-white text-xl font-semibold">{country?.name}:</div>
 							<div className="text-white flex justify-start items-center my-2">
 								<Navigation size={20} className="stroke-2 text-white mr-2" />
-								Проспект Ленина, 40
+								{country?.street}
 							</div>
-							<div className="text-white flex justify-start items-center my-2">
-								<Phone size={20} className="stroke-2 text-white mr-2" />
-								<Link
-									href="tel:89026554530"
-									className="text-white text-base hover:underline"
-								>
-									{" "}
-									8 (902) 655-45-30
-								</Link>
-							</div>
+							{country?.phone &&
+								country?.phone.map((item, index) => {
+									return (
+										<div
+											key={index}
+											className="text-white flex justify-start items-center my-2"
+										>
+											<Phone size={20} className="stroke-2 text-white mr-2" />
+											<Link
+												href={`tel:${item}`}
+												className="text-white text-base hover:underline"
+											>
+												{" "}
+												{item}
+											</Link>
+										</div>
+									);
+								})}
 						</div>
 						<div className="text-white text-base mt-2 font-extralight">
 							All rights reserved © 2024
