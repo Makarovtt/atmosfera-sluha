@@ -1,8 +1,8 @@
 "use client";
 
+import { Link } from "@nextui-org/react";
 import clsx from "clsx";
 import { ChevronDown, ChevronDownCircle } from "lucide-react";
-import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -55,15 +55,18 @@ export function CatalogMain({ dataMenuMain }: any) {
 				return (
 					<div key={item.id} className="mb-5 group">
 						<div className="flex items-center justify-start gap-10 px-5 mb-2">
-							<h3
-								className={clsx(
-									"font-semibold text-lg transition",
-									arrSlash[2] === item.vendor
-										? "text-cyan-600"
-										: "text-gray-400 group-hover:text-gray-700",
-								)}
-							>
-								<Link href={`/catalog/${item.vendor}`}>{item.vendor}</Link>
+							<h3>
+								<Link
+									className={clsx(
+										"font-semibold text-lg transition",
+										arrSlash[2] === item.vendor
+											? "text-cyan-600"
+											: "text-gray-400 group-hover:text-gray-700",
+									)}
+									href={`/catalog/${item.vendor}`}
+								>
+									{item.vendor}
+								</Link>
 							</h3>
 						</div>
 						{item.families?.map((iFamili: Ifamilies) => {
@@ -85,17 +88,17 @@ export function CatalogMain({ dataMenuMain }: any) {
 											/>
 										</div>
 									) : (
-										<div className="mt-1 w-5"></div>
+										<div className="mt-1 w-6"></div>
 									)}
 
-									<div>
+									<div className="w-full">
 										<span className="text-lg ">
 											<Link
 												href={`/catalog/${item.vendor}/${iFamili.family}`}
 												className={clsx(
 													" transition ",
 													arrSlash[3] === iFamili.family
-														? "text-cyan-700"
+														? "text-cyan-700 font-semibold"
 														: "text-gray-500 group-hover/family:text-gray-800 group-hover/family:font-medium",
 												)}
 											>
@@ -112,15 +115,16 @@ export function CatalogMain({ dataMenuMain }: any) {
 												return (
 													<div
 														key={iChild.id}
-														className="mb-2 text-gray-500"
+														className="mb-2 text-gray-500 w-full group/undfamily"
 													>
 														<Link
 															href={`/catalog/${item.vendor}/${iFamili.family}/${iChild.child}`}
-															className={
+															className={clsx(
+																"transition",
 																arrSlash[4] === iChild.child
 																	? "text-cyan-700"
-																	: "text-gray-500 hover:text-gray-800"
-															}
+																	: "text-gray-500 hover:text-gray-900 group-hover/undfamily:translate-x-1",
+															)}
 														>
 															{iChild.child}
 														</Link>

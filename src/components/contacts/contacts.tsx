@@ -17,15 +17,21 @@ export function Contacts() {
 			<h1 className="text-center text-2xl text-cyan-700 font-bold mb-5 mt-10">
 				Контакты магазинов «Атмосфера слуха»
 			</h1>
-			<div className="bg-white py-2 px-6 rounded-xl mb-5 flex justify-start items-center max-w-[300px]">
+			{/* <div className="bg-white py-2 px-6 rounded-xl mb-5 flex justify-start items-center max-w-[300px]">
 				<span className="mr-6 block">Ваш&nbsp;город:</span> <SelectHeader />
-			</div>
-			<div className="relative flex flex-col ">
+			</div> */}
+			<div className="relative flex flex-col mt-10 rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
 				<div>
 					<AppMap steckCurrentCity={country?.karta} />
 				</div>
-				<div className="w-86 bg-white my-5 static order-[-1] rounded-xl p-6 top-10 right-10 md:absolute md:my-0 md:order-2">
-					<h3 className="text-2xl text-cyan-700 mb-4">{country?.name}:</h3>
+				<div
+					className="w-86 bg-white my-5 static order-[-1] rounded-xl p-6 top-10 right-10 
+								shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]
+								md:absolute md:my-0 md:order-2"
+				>
+					<h3 className="text-sm text-gray-700 mb-4 flex justify-start items-center pl-4">
+						<SelectHeader size="xl" />
+					</h3>
 					<div className="flex justify-start items-center mb-4">
 						<Navigation size={20} className="stroke-1 text-slate-600 mr-3" />
 						{country?.street}
