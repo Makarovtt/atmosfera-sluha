@@ -36,14 +36,14 @@ export function MenuMainTop({ className }: Props) {
 			<div className="grow-0 justify-center shrink-0 w-[250px]">
 				<div
 					className="w-full bg-cyan-700 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)] rounded-lg
-				hover:bg-cyan-600 transition"
+				hover:bg-cyan-600 transition text-center"
 				>
 					<Button
+						href="/catalog"
 						as={Link}
 						size="lg"
 						color="primary"
 						radius="lg"
-						href="#"
 						variant="flat"
 						className="w-full bg-transparent text-white"
 					>

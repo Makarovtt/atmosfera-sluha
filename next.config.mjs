@@ -37,6 +37,26 @@ const nextConfig = {
 				hostname: "**.zakupka.com",
 				port: "",
 			},
+			{
+				protocol: "https",
+				hostname: "**.atmosfera-sluha.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "xenofone.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "www.sluh-center.ru",
+				port: "",
+			},
+			{
+				protocol: "https",
+				hostname: "silasluha.ru",
+				port: "",
+			},
 		],
 	},
 };

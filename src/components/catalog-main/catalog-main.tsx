@@ -2,9 +2,9 @@
 
 import clsx from "clsx";
 import { ChevronDown, ChevronDownCircle } from "lucide-react";
-import Image from "next/image";
-import imgLogoAudiFon from "public/images/catalog-main/logo-audifon.png";
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Ichildes {
 	id: string;
@@ -25,9 +25,15 @@ interface Vendor {
 }
 
 export function CatalogMain({ dataMenuMain }: any) {
-	const [dataMenuGet, setDataMenuGet] = useState(dataMenuMain);
+	const pathname = usePathname();
+	const arrSlash = pathname.split("/");
 
-	function openFamily(familyName: any, changeTogle: any = true) {
+	// console.log(arrSlash);
+
+	const [dataMenuGet, setDataMenuGet] = useState(dataMenuMain);
+	console.log(dataMenuMain);
+
+	function openFamily(familyName: string, changeTogle: any = true) {
 		setDataMenuGet((pre: any) => {
 			return pre.map((item: any) => {
 				return {
@@ -42,19 +48,29 @@ export function CatalogMain({ dataMenuMain }: any) {
 			});
 		});
 	}
+
 	return (
 		<>
 			{dataMenuGet?.map((item: Vendor) => {
 				return (
-					<div key={item.id} className="mb-5">
+					<div key={item.id} className="mb-5 group">
 						<div className="flex items-center justify-start gap-10 px-5 mb-2">
-							<h3 className="font-semibold text-lg text-cyan-600">{item.vendor}</h3>
+							<h3
+								className={clsx(
+									"font-semibold text-lg transition",
+									arrSlash[2] === item.vendor
+										? "text-cyan-600"
+										: "text-gray-400 group-hover:text-gray-700",
+								)}
+							>
+								<Link href={`/catalog/${item.vendor}`}>{item.vendor}</Link>
+							</h3>
 						</div>
 						{item.families?.map((iFamili: Ifamilies) => {
 							return (
 								<div
 									key={iFamili.id}
-									className="flex items-start justify-start gap-5 px-5"
+									className="flex items-start justify-start gap-5 px-5 group/family"
 								>
 									{iFamili.childes.length ? (
 										<div className="mt-1">
@@ -73,8 +89,18 @@ export function CatalogMain({ dataMenuMain }: any) {
 									)}
 
 									<div>
-										<span className="text-lg text-cyan-800">
-											{iFamili.family}
+										<span className="text-lg ">
+											<Link
+												href={`/catalog/${item.vendor}/${iFamili.family}`}
+												className={clsx(
+													" transition ",
+													arrSlash[3] === iFamili.family
+														? "text-cyan-700"
+														: "text-gray-500 group-hover/family:text-gray-800 group-hover/family:font-medium",
+												)}
+											>
+												{iFamili.family}
+											</Link>
 										</span>
 										<div
 											className={clsx(
@@ -88,7 +114,16 @@ export function CatalogMain({ dataMenuMain }: any) {
 														key={iChild.id}
 														className="mb-2 text-gray-500"
 													>
-														{iChild.child}
+														<Link
+															href={`/catalog/${item.vendor}/${iFamili.family}/${iChild.child}`}
+															className={
+																arrSlash[4] === iChild.child
+																	? "text-cyan-700"
+																	: "text-gray-500 hover:text-gray-800"
+															}
+														>
+															{iChild.child}
+														</Link>
 													</div>
 												);
 											})}
