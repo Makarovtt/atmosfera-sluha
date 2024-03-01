@@ -2,11 +2,14 @@
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
-import { objServices } from "../services/sevices";
 import { Button, Link } from "@nextui-org/react";
+import { DATA_SERVICES } from "../services/services-data";
+
+const objServices = DATA_SERVICES;
 
 export function MenuPages() {
 	const pathname = usePathname();
+
 	return (
 		<>
 			<div>
@@ -44,7 +47,10 @@ export function MenuPages() {
 									as={Link}
 									href={item.href}
 									key={item.id}
-									className="py-1 w-full text-left text-sm bg-white hover:bg-gray-100 justify-start"
+									className={clsx(
+										"py-1 w-full text-left text-sm bg-white hover:bg-gray-100 justify-start",
+										pathname === item.href ? "text-cyan-700 font-semibold" : "",
+									)}
 								>
 									{item.title}
 								</Button>

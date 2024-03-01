@@ -14,7 +14,7 @@ export function Contacts() {
 	const country = contactsData.find((item) => item.id === idCountry);
 	return (
 		<>
-			<h1 className="text-center text-2xl text-cyan-700 font-bold mb-5 mt-10">
+			<h1 className="text-center text-2xl text-cyan-700 font-bold mb-5 lg:mt-10">
 				Контакты магазинов «Атмосфера слуха»
 			</h1>
 			{/* <div className="bg-white py-2 px-6 rounded-xl mb-5 flex justify-start items-center max-w-[300px]">

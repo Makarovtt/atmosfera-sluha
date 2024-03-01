@@ -1,49 +1,45 @@
 "use client";
 
-import { BookUser, ClipboardList, Home, MapPin, TextSearch } from "lucide-react";
+import { BookUser, Home } from "lucide-react";
 import { MyButton } from "../ui/my-button";
 import clsx from "clsx";
+
+import { useDisclosure, Link } from "@nextui-org/react";
+import { ModalChangeCity } from "./modal-change-city";
+import { ModalServices } from "./modal-sevices";
+import { ModalCatalog } from "./modal-catalog";
 
 interface Props {
 	className?: React.ComponentProps<"div">["className"];
 }
-export function MenuMainBottom({ className }: Props) {
+export function MenuMainBottom({ className, dataMenuMain }: any) {
 	return (
 		<>
 			<div
 				className={clsx(
-					"bottom-0 left-0 right-0 fixed py-4 px-4 bg-white z-20",
+					"bottom-0 left-0 right-0 fixed py-4 px-4 bg-white z-30",
 					"justify-between items-end",
 					"shadow-[0_-2px_8px_#00000026]",
 					className,
 				)}
 			>
 				<div>
-					<MyButton color="none" size="none-min">
+					<MyButton as={Link} href="/" color="none" size="none-min">
 						<Home className="shrink-0" />
 						Главная
 					</MyButton>
 				</div>
 				<div className="">
-					<MyButton color="none" size="none-min">
-						<MapPin className="shrink-0" />
-						Город
-					</MyButton>
+					<ModalChangeCity />
 				</div>
 				<div className="">
-					<MyButton color="none" size="none-min">
-						<TextSearch className="shrink-0" />
-						Каталог
-					</MyButton>
+					<ModalCatalog dataMenuMain={dataMenuMain} />
 				</div>
 				<div className="">
-					<MyButton color="none" size="none-min">
-						<ClipboardList className="shrink-0" />
-						Услуги
-					</MyButton>
+					<ModalServices />
 				</div>
 				<div className="">
-					<MyButton color="none" size="none-min">
+					<MyButton as={Link} href="/contacts" color="none" size="none-min">
 						<BookUser className="shrink-0" />
 						Контакты
 					</MyButton>

@@ -6,8 +6,13 @@ import { SearchHeader } from "./search-header";
 import { MenuPages } from "./menu-pages";
 import { HeaderContacts } from "./header-contacts";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { CONTACTS_DATA } from "../contacts/data";
+const contactsData = CONTACTS_DATA;
 
 export function Header() {
+	const idCountry = useAppSelector((state) => state.countryReducer.value);
+	const country = contactsData.find((item) => item.id === idCountry);
 	return (
 		<header>
 			<div
@@ -28,9 +33,9 @@ export function Header() {
 				<div className="shrink-0 hidden lg-1000:block bg-white rounded-lg px-4 pt-1 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
 					<HeaderContacts />
 				</div>
-				<div className="flex justify-start items-end mt-8 gap-2 font-semibold ml-10 mr-1 text-cyan-500 lg-1000:hidden min-min-screen:mt-0">
+				<div className="flex justify-start items-end mt-8 gap-2 font-semibold ml-0 min-min-screen:ml-10 mr-1 text-cyan-500 lg-1000:hidden min-min-screen:mt-0">
 					<Navigation size={20} className="stroke-1 text-slate-400" />
-					Волгоград
+					{country?.name}
 				</div>
 			</div>
 			<div className="block mx-5 md:mx-10 my-7 lg-1000:hidden">

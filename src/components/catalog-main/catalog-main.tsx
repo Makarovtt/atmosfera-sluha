@@ -31,7 +31,6 @@ export function CatalogMain({ dataMenuMain }: any) {
 	// console.log(arrSlash);
 
 	const [dataMenuGet, setDataMenuGet] = useState(dataMenuMain);
-	console.log(dataMenuMain);
 
 	function openFamily(familyName: string, changeTogle: any = true) {
 		setDataMenuGet((pre: any) => {
