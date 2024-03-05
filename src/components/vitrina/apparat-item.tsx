@@ -20,7 +20,7 @@ export function ApparatItem({ dataItem }: any) {
 		return newPrice;
 	}
 	return (
-		<div className="max-w-72 w-full min-w-40 p-3 border border-slate-200 rounded-xl bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
+		<div className="max-w-96 w-full min-w-40 p-3 border border-slate-200 rounded-xl bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
 			<div className="flex justify-center items-center h-[200px] relative">
 				<Image
 					src={errorImage ? Loader : dataItem.picture}
@@ -34,15 +34,15 @@ export function ApparatItem({ dataItem }: any) {
 					className="w-full h-auto object-contain"
 				/>
 			</div>
-			<div>
+			<div className="mb-4 sm:mb-1">
 				<Link
 					href={`/catalog/${dataItem.vendor}/${dataItem.family}/${dataItem.undfamily}/${dataItem.title}`}
 				>
 					{dataItem.title}
 				</Link>
 			</div>
-			<div className="flex justify-between items-center">
-				<div className="flex justify-center items-center gap-1 w-4/12 my-2">
+			<div className="justify-between items-center flex flex-col-reverse sm:flex-row">
+				<div className="flex justify-center items-center gap-1 w-full sm:w-4/12 my-2">
 					<Button
 						isIconOnly
 						variant="bordered"
@@ -58,11 +58,11 @@ export function ApparatItem({ dataItem }: any) {
 						<ShoppingCart size={16} className="stroke-1" />
 					</Button>
 				</div>
-				<div className="px-4 py-1 text-right rounded-xl bg-cyan-50 font-bold text-lg text-gray-500 w-8/12 ml-3">
+				<div className="px-4 py-1 text-center sm:text-right rounded-xl bg-cyan-50 font-bold text-lg text-gray-500 mb-2 w-full sm:w-8/12 sm:ml-3">
 					{modificationPriceView(dataItem.price)}
 				</div>
 			</div>
-			<div className="flex justify-end">
+			<div className="flex justify-center sm:justify-end">
 				<Button size="sm" variant="bordered" className="px-2 border">
 					<Checkbox
 						size="sm"
@@ -75,9 +75,11 @@ export function ApparatItem({ dataItem }: any) {
 					</Checkbox>
 				</Button>
 			</div>
-			<div className="text-sm flex justify-center mt-5 items-center">
+			<div className="text-sm flex flex-col sm:flex-row justify-center mt-5 items-center">
 				Доставка&nbsp;:&nbsp;
-				<span className="text-base font-semibold text-cyan-700">БЕСПЛАТНО!</span>
+				<span className="text-base font-semibold text-cyan-700 block sm:inline">
+					БЕСПЛАТНО!
+				</span>
 				<Tooltip
 					placement="right"
 					content={
@@ -90,7 +92,7 @@ export function ApparatItem({ dataItem }: any) {
 						</div>
 					}
 				>
-					<Info size={20} className="ml-4" />
+					<Info size={20} className="sm:ml-4 shrink-0" />
 				</Tooltip>
 			</div>
 		</div>

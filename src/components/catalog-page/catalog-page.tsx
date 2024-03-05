@@ -44,7 +44,7 @@ export function CatalogPageComponent({
 		<>
 			<h1>Все аппараты</h1>
 
-			<div className="flex flex-wrap justify-center items-start gap-5 my-5">
+			<div className="grid my-5 gap-1 sm:gap-4 grid-cols-2 md-lg:grid-cols-3 2xl:grid-cols-4">
 				{dataApparats &&
 					dataApparats?.map((item: Iapparats) => {
 						return <ApparatItem key={item.id} dataItem={item} />;

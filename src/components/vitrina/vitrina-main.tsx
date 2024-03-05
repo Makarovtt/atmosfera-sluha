@@ -65,7 +65,7 @@ export function VitrinaMain() {
 	return (
 		<div className="my-16">
 			<h2 className="my-3 text-2xl text-cyan-600">Товары по акции</h2>
-			<div className="flex flex-wrap justify-center items-start gap-5 my-5">
+			<div className="grid my-5 gap-1 sm:gap-4 grid-cols-2 md-lg:grid-cols-3 2xl:grid-cols-4">
 				{apparats &&
 					apparats?.map((item: Iapparats) => {
 						return <ApparatItem key={item.id} dataItem={item} />;
