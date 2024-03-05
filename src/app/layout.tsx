@@ -11,8 +11,6 @@ import { UIProvider } from "./ui-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const urlGetBrands = "https://server.atmosfera-sluha.ru/sluhmarketonline/app_brands.php";
-
 interface Ichildes {
 	id: string;
 	child: string;
@@ -34,9 +32,9 @@ interface Idata {
 	brands_list: Vendor[];
 }
 
+const urlGetBrands = "https://server.atmosfera-sluha.ru/sluhmarketonline/app_brands.php";
 async function getBrands(urlGetBrands: string): Promise<Idata> {
 	const res = await fetch(urlGetBrands);
-
 	if (!res.ok) {
 		throw new Error("Failed to fetch data");
 	}

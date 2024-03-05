@@ -1,10 +1,13 @@
 "use client";
 
-import { Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import clsx from "clsx";
 import { ChevronDown, ChevronDownCircle } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import { change } from "@/redux/features/catalog-slice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 interface Ichildes {
 	id: string;
@@ -28,7 +31,14 @@ export function CatalogMain({ dataMenuMain }: any) {
 	const pathname = usePathname();
 	const arrSlash = pathname.split("/");
 
-	// console.log(arrSlash);
+	const readyCatalog = useAppSelector((state) => state.catalogReducer);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(change(dataMenuMain));
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const [dataMenuGet, setDataMenuGet] = useState(dataMenuMain);
 
