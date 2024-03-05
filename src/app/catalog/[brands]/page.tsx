@@ -27,7 +27,7 @@ async function getApparats(urlGetApparats: string, page = 1, brand = "A&M"): Pro
 	);
 	return data;
 }
-export default async function CatalogBrands(context: any) {
+export default async function CatalogFamily(context: any) {
 	const brandContext = context.params.brands.replace(/%20/g, " ").replace(/%26/g, "&");
 	const pageContext = context.searchParams.page;
 	const dataApparats = await getApparats(urlGetApparats, pageContext, brandContext);

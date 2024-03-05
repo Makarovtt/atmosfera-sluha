@@ -14,17 +14,17 @@ export function Header() {
 	const idCountry = useAppSelector((state) => state.countryReducer.value);
 	const country = contactsData.find((item) => item.id === idCountry);
 	return (
-		<header>
+		<header className="max-w-[1600px] mx-auto">
 			<div
-				className="max-w-[2400px] mx-5 md:mx-10 2xl:mx-20 4xl:mx-auto
+				className="mx-1 min-min-screen:mx-5 md:mx-10 2xl:mx-20 4xl:mx-auto
 			 my-4 flex min-min-screen:flex-row flex-col justify-between items-center"
 			>
 				<div
-					className="shrink-0 bg-white rounded-lg px-4 py-2 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]
+					className="shrink-0 bg-white rounded-lg px-1 min-min-screen:px-4 py-2 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]
 								 hover:opacity-[0.8] transition cursor-pointer"
 				>
 					<Link href={"/"}>
-						<Image src={Logo} alt="" className="w-[222px]" />
+						<Image src={Logo} alt="" className="w-full min-min-screen:w-[222px]" />
 					</Link>
 				</div>
 				<div className="text-lg w-full hidden lg-1000:flex justify-start gap-4 ml-12">

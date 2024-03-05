@@ -1,5 +1,6 @@
 import { CatalogPageComponent } from "@/components/catalog-page/catalog-page";
 import { BreadCrumbs } from "@/components/ui/breadcrumbs";
+import { ApparatCard } from "@/components/vitrina/apparat-card";
 import axios from "axios";
 import { NextRequest } from "next/server";
 
@@ -12,6 +13,7 @@ async function getApparats(
 	brand = null,
 	family = null,
 	undfamily = null,
+	apparat = "",
 ): Promise<any> {
 	const vendor = brand === "A&M" ? "A%26M" : brand;
 	const nmbPage = page;
@@ -19,26 +21,23 @@ async function getApparats(
 	const childName = null;
 	const prices = null;
 
-	const changeCheckAllData = {
-		// 'onfilter': filtersList,
-		vendor: vendor,
-		family: family,
-		undfamily: undfamily,
-		nmbPage: nmbPage,
-		limit: limit,
-		child: childName,
-		prices: prices,
-	};
-	const { data } = await axios.post(
-		urlGetApparats,
-		`getModuleFilter=${JSON.stringify(changeCheckAllData)}`,
-	);
+	let apparatName = "";
+	if (apparat.includes("&")) {
+		let startPosition = apparat.indexOf("&");
+		let strStart = apparat.slice(0, startPosition);
+		let strEnd = apparat.slice(startPosition + 1);
+		apparatName = strStart + "%26" + strEnd;
+	} else {
+		apparatName = apparat;
+	}
+	const { data } = await axios.get(`${urlGetApparats}?title=${apparatName}`);
 	return data;
 }
-export default async function CatalogApparat(context: any) {
+export default async function CatalogBrands(context: any) {
 	const brandContext = context.params.brands.replace(/%20/g, " ").replace(/%26/g, "&");
 	const familyContext = context.params.family.replace(/%20/g, " ").replace(/%26/g, "&");
 	const undfamilyContext = context.params.undfamily.replace(/%20/g, " ").replace(/%26/g, "&");
+	const apparatContext = context.params.apparat.replace(/%20/g, " ").replace(/%26/g, "&");
 	// const undfamilyContext = undfamilyGet.replace(/%20/g, " ");
 	const pageContext = context.searchParams.page;
 	const dataApparats = await getApparats(
@@ -47,20 +46,20 @@ export default async function CatalogApparat(context: any) {
 		brandContext,
 		familyContext,
 		undfamilyContext,
+		apparatContext,
 	);
 	return (
 		<>
-			<BreadCrumbs brand={brandContext} family={familyContext} undfamily={undfamilyContext} />
-			<div className="mt-5">
-				<CatalogPageComponent
-					dataApparats={dataApparats.goods}
-					countApparats={dataApparats.count_all_goods}
-					currentPage={dataApparats.page}
-					brand={brandContext}
-					family={familyContext}
-					undfamily={undfamilyContext}
-				/>
-			</div>
+			<BreadCrumbs
+				brand={brandContext}
+				family={familyContext}
+				undfamily={undfamilyContext}
+				title={apparatContext}
+			/>
+			<h1 className="mt-10 text-4xl font-bold mb-10 px-3 sm:px-0">
+				{dataApparats.goods[0].title}
+			</h1>
+			<ApparatCard dataInfo={dataApparats} />
 		</>
 	);
 }

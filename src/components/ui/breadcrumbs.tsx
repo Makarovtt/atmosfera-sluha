@@ -3,7 +3,7 @@ import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 
-export function BreadCrumbs({ flag = "catalog", brand, family, undfamily }: any) {
+export function BreadCrumbs({ flag = "catalog", brand, family, undfamily, title }: any) {
 	return (
 		<div className="flex flex-col flex-wrap gap-4">
 			<Breadcrumbs
@@ -34,7 +34,12 @@ export function BreadCrumbs({ flag = "catalog", brand, family, undfamily }: any)
 				{family && (
 					<BreadcrumbItem href={`/catalog/${brand}/${family}`}>{family}</BreadcrumbItem>
 				)}
-				{undfamily && <BreadcrumbItem>{undfamily}</BreadcrumbItem>}
+				{undfamily && (
+					<BreadcrumbItem href={`/catalog/${brand}/${family}/${undfamily}`}>
+						{undfamily}
+					</BreadcrumbItem>
+				)}
+				{title && <BreadcrumbItem>{title}</BreadcrumbItem>}
 			</Breadcrumbs>
 		</div>
 	);

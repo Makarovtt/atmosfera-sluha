@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Checkbox, Tooltip } from "@nextui-org/react";
+import { Button, Checkbox, Link, Tooltip } from "@nextui-org/react";
 import { Heart, Info, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -34,7 +34,13 @@ export function ApparatItem({ dataItem }: any) {
 					className="w-full h-auto object-contain"
 				/>
 			</div>
-			<div>{dataItem.title}</div>
+			<div>
+				<Link
+					href={`/catalog/${dataItem.vendor}/${dataItem.family}/${dataItem.undfamily}/${dataItem.title}`}
+				>
+					{dataItem.title}
+				</Link>
+			</div>
 			<div className="flex justify-between items-center">
 				<div className="flex justify-center items-center gap-1 w-4/12 my-2">
 					<Button
