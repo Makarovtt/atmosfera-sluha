@@ -4,7 +4,7 @@ import { BookUser, Home } from "lucide-react";
 import { MyButton } from "../ui/my-button";
 import clsx from "clsx";
 
-import { useDisclosure, Link } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
 import { ModalChangeCity } from "./modal-change-city";
 import { ModalServices } from "./modal-sevices";
 import { ModalCatalog } from "./modal-catalog";
@@ -12,7 +12,7 @@ import { ModalCatalog } from "./modal-catalog";
 interface Props {
 	className?: React.ComponentProps<"div">["className"];
 }
-export function MenuMainBottom({ className, dataMenuMain }: any) {
+export function MenuMainBottom({ className }: any) {
 	return (
 		<>
 			<div
@@ -33,7 +33,7 @@ export function MenuMainBottom({ className, dataMenuMain }: any) {
 					<ModalChangeCity />
 				</div>
 				<div className="">
-					<ModalCatalog dataMenuMain={dataMenuMain} />
+					<ModalCatalog />
 				</div>
 				<div className="">
 					<ModalServices />

@@ -1,11 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+const items =
+	localStorage.getItem("country") !== null
+		? JSON.parse(localStorage.getItem("country") || "")
+		: 2;
+
 type CountryState = {
 	value: number;
 };
 
 const initialState = {
-	value: 2,
+	value: items,
 } as CountryState;
 
 export const country = createSlice({
@@ -14,6 +19,8 @@ export const country = createSlice({
 	reducers: {
 		change: (state, action: PayloadAction<number>) => {
 			state.value = action.payload;
+
+			localStorage.setItem("country", JSON.stringify(state.value));
 		},
 	},
 });

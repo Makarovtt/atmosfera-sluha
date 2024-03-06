@@ -13,7 +13,7 @@ import { CatalogMain } from "../catalog-main/catalog-main";
 
 const dataServices = DATA_SERVICES;
 
-export function ModalCatalog({ dataMenuMain }: any) {
+export function ModalCatalog() {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	return (
@@ -38,7 +38,7 @@ export function ModalCatalog({ dataMenuMain }: any) {
 						<>
 							<ModalHeader className="flex flex-col gap-1">Каталог</ModalHeader>
 							<ModalBody>
-								<CatalogMain dataMenuMain={dataMenuMain} />
+								<CatalogMain />
 							</ModalBody>
 						</>
 					)}

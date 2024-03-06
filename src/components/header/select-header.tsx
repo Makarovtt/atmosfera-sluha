@@ -9,6 +9,7 @@ import { CONTACTS_DATA } from "../contacts/data";
 
 export function SelectHeader({ size = "base" }: any) {
 	const contactsData = CONTACTS_DATA;
+
 	const idCountry = useAppSelector((state) => state.countryReducer.value);
 	const dispatch = useAppDispatch();
 

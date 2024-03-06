@@ -33,6 +33,7 @@ interface Iparams {
 }
 
 export function CatalogPageComponent({
+	titlePage = "Все аппараты",
 	dataApparats,
 	countApparats,
 	currentPage,
@@ -42,7 +43,7 @@ export function CatalogPageComponent({
 }: any) {
 	return (
 		<>
-			<h1>Все аппараты</h1>
+			<h1 className="text-3xl font-semibold ml-2">{titlePage}</h1>
 
 			<div className="grid my-5 gap-1 sm:gap-4 grid-cols-2 md-lg:grid-cols-3 2xl:grid-cols-4">
 				{dataApparats &&

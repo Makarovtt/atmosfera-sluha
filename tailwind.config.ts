@@ -15,6 +15,7 @@ const config: Config = {
 		},
 		screens: {
 			"min-screen": "320px",
+			"min-360": "360px",
 			"min-min-screen": "460px",
 			"small-screen": "500px",
 			sm: "640px",

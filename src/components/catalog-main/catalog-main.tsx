@@ -1,13 +1,11 @@
 "use client";
 
-import { Button, Link } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
+import axios from "axios";
 import clsx from "clsx";
-import { ChevronDown, ChevronDownCircle } from "lucide-react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-import { change } from "@/redux/features/catalog-slice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 interface Ichildes {
 	id: string;
@@ -26,21 +24,25 @@ interface Vendor {
 	image?: string | null;
 	families?: Ifamilies[] | [];
 }
+interface Idata {
+	brands_list: Vendor[];
+}
 
-export function CatalogMain({ dataMenuMain }: any) {
+const urlGetBrands = "https://server.atmosfera-sluha.ru/sluhmarketonline/app_brands.php";
+
+export function CatalogMain() {
+	const [dataMenuGet, setDataMenuGet] = useState([]);
+
 	const pathname = usePathname();
 	const arrSlash = pathname.split("/");
 
-	const readyCatalog = useAppSelector((state) => state.catalogReducer);
-	const dispatch = useAppDispatch();
-
 	useEffect(() => {
-		dispatch(change(dataMenuMain));
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		async function fetchData() {
+			const { data } = await axios.get(urlGetBrands);
+			setDataMenuGet(data.brands_list);
+		}
+		fetchData();
 	}, []);
-
-	const [dataMenuGet, setDataMenuGet] = useState(dataMenuMain);
 
 	function openFamily(familyName: string, changeTogle: any = true) {
 		setDataMenuGet((pre: any) => {

@@ -3,9 +3,12 @@
 import { Button, Checkbox, Link, Tooltip } from "@nextui-org/react";
 import { Heart, Info, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "@/public/default-apparat.png";
 import clsx from "clsx";
+
+import { change } from "@/redux/features/favorites-slice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 export function ApparatItem({ dataItem }: any) {
 	const [errorImage, setErrorImage] = useState(false);
@@ -19,8 +22,31 @@ export function ApparatItem({ dataItem }: any) {
 		}).format(Number(price));
 		return newPrice;
 	}
+	const favorites = useAppSelector((state) => state.favoriteReducer);
+	const dispatch = useAppDispatch();
+
+	function addToFavorites(id: number) {
+		dispatch(change(id));
+	}
+
+	useEffect(() => {
+		function checkFavorites(checkId: number) {
+			const check = favorites.some((i) => i === Number(checkId));
+			if (check) {
+				setHeartButton(true);
+			} else {
+				setHeartButton(false);
+			}
+		}
+		checkFavorites(dataItem.id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [favorites]);
+
 	return (
-		<div className="max-w-96 w-full min-w-40 p-3 border border-slate-200 rounded-xl bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
+		<div
+			className="max-w-96 w-full min-w-40 p-3 border border-slate-200 
+						rounded-xl bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]"
+		>
 			<div className="flex justify-center items-center h-[200px] relative">
 				<Image
 					src={errorImage ? Loader : dataItem.picture}
@@ -49,7 +75,7 @@ export function ApparatItem({ dataItem }: any) {
 						className={clsx(
 							heartButton ? "border-cyan-600 text-cyan-700 border-2" : "border",
 						)}
-						onClick={() => setHeartButton((prev) => !prev)}
+						onClick={() => addToFavorites(Number(dataItem.id))}
 					>
 						{/* <Checkbox defaultSelected icon={<Heart />}></Checkbox> */}
 						<Heart size={16} className={clsx(heartButton ? "stroke-2" : "stroke-1")} />
@@ -58,7 +84,10 @@ export function ApparatItem({ dataItem }: any) {
 						<ShoppingCart size={16} className="stroke-1" />
 					</Button>
 				</div>
-				<div className="px-4 py-1 text-center sm:text-right rounded-xl bg-cyan-50 font-bold text-lg text-gray-500 mb-2 w-full sm:w-8/12 sm:ml-3">
+				<div
+					className="px-4 py-1 text-center sm:text-right rounded-xl bg-cyan-50 font-bold text-lg 
+								text-gray-500 mb-2 w-full sm:w-8/12 sm:ml-3"
+				>
 					{modificationPriceView(dataItem.price)}
 				</div>
 			</div>

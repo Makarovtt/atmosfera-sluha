@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counter-slice";
-import catalogReducer from "./features/catalog-slice";
 import countryReducer from "./features/country-slice";
+import favoriteReducer from "./features/favorites-slice";
 
 export const store = configureStore({
 	reducer: {
+		favoriteReducer,
 		countryReducer,
-		catalogReducer,
 	},
 	devTools: process.env.NODE_ENV !== "production",
 });
