@@ -1,18 +1,20 @@
 "use client";
 
 import { Button, Checkbox, Link, Tooltip } from "@nextui-org/react";
-import { Heart, Info, ShoppingCart } from "lucide-react";
+import { Check, Heart, Info, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "@/public/default-apparat.png";
 import clsx from "clsx";
 
 import { change } from "@/redux/features/favorites-slice";
+import { addToBasket } from "@/redux/features/basket-slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 export function ApparatItem({ dataItem }: any) {
 	const [errorImage, setErrorImage] = useState(false);
 	const [heartButton, setHeartButton] = useState(false);
+	const [busketButton, setBasketButton] = useState(false);
 
 	function modificationPriceView(price: string) {
 		const newPrice = new Intl.NumberFormat("ru-Ru", {
@@ -23,10 +25,16 @@ export function ApparatItem({ dataItem }: any) {
 		return newPrice;
 	}
 	const favorites = useAppSelector((state) => state.favoriteReducer);
+	const basketInfo = useAppSelector((state) => state.basketReducer);
+
 	const dispatch = useAppDispatch();
 
 	function addToFavorites(id: number) {
 		dispatch(change(id));
+	}
+
+	function putToBasket(data: any) {
+		dispatch(addToBasket(data));
 	}
 
 	useEffect(() => {
@@ -41,6 +49,19 @@ export function ApparatItem({ dataItem }: any) {
 		checkFavorites(dataItem.id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [favorites]);
+
+	useEffect(() => {
+		function checkBasket(checkId: number) {
+			const check = basketInfo.some((i) => i.id === checkId);
+			if (check) {
+				setBasketButton(true);
+			} else {
+				setBasketButton(false);
+			}
+		}
+		checkBasket(dataItem.id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [basketInfo]);
 
 	return (
 		<div
@@ -68,7 +89,10 @@ export function ApparatItem({ dataItem }: any) {
 				</Link>
 			</div>
 			<div className="justify-between items-center flex flex-col-reverse sm:flex-row">
-				<div className="flex justify-center items-center gap-1 w-full sm:w-4/12 my-2">
+				<div
+					className="flex  items-center gap-1 w-full my-2 justify-center
+								sm:w-5/12 sm:justify-start"
+				>
 					<Button
 						isIconOnly
 						variant="bordered"
@@ -80,19 +104,32 @@ export function ApparatItem({ dataItem }: any) {
 						{/* <Checkbox defaultSelected icon={<Heart />}></Checkbox> */}
 						<Heart size={16} className={clsx(heartButton ? "stroke-2" : "stroke-1")} />
 					</Button>
-					<Button isIconOnly variant="bordered" className="border">
-						<ShoppingCart size={16} className="stroke-1" />
+					<Button
+						isIconOnly
+						variant={busketButton ? "bordered" : "solid"}
+						className={clsx(
+							"",
+							busketButton ? "bg-cyan-700 text-white border-0" : "border",
+						)}
+						onClick={() => putToBasket(dataItem)}
+					>
+						{busketButton ? (
+							<Check size={16} className="stroke-3" />
+						) : (
+							<ShoppingCart size={16} className="stroke-1" />
+						)}
 					</Button>
 				</div>
 				<div
-					className="px-4 py-1 text-center sm:text-right rounded-xl bg-cyan-50 font-bold text-lg 
-								text-gray-500 mb-2 w-full sm:w-8/12 sm:ml-3"
+					className="px-4 h-10 rounded-xl bg-cyan-50 font-bold text-lg 
+								text-gray-500 w-full flex items-center justify-center
+								sm:justify-end sm:ml-0 sm:w-7/12 "
 				>
 					{modificationPriceView(dataItem.price)}
 				</div>
 			</div>
-			<div className="flex justify-center sm:justify-end">
-				<Button size="sm" variant="bordered" className="px-2 border">
+			<div className="flex justify-center sm:justify-end w-full">
+				<Button size="sm" variant="bordered" className="px-2 border sm:w-7/12">
 					<Checkbox
 						size="sm"
 						classNames={{

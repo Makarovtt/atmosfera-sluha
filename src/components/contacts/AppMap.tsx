@@ -5,7 +5,7 @@ interface Ikarta {
 	geometry: Array<Number>;
 }
 
-export function AppMap({ steckCurrentCity }: any) {
+export function AppMap({ steckCurrentCity, height = "500px" }: any) {
 	let centerMap = steckCurrentCity.center;
 	let geometryMap = steckCurrentCity.geometry;
 
@@ -23,7 +23,7 @@ export function AppMap({ steckCurrentCity }: any) {
 						type: "yandex#map",
 						zoom: 16,
 					}}
-					height={"500px"}
+					height={height}
 					width={"100%"}
 				>
 					<Placemark

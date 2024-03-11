@@ -21,7 +21,10 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 export function ApparatFavoritesItem({ dataItem }: any) {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 	const [timeSet, setTimeSet] = useState<any>();
+	const [intervalSet, setIntervalTimeSet] = useState<any>();
 	const [errorImage, setErrorImage] = useState(false);
+
+	const [count, setCount] = useState<number>(5);
 	const [heartButton, setHeartButton] = useState(false);
 
 	function modificationPriceView(price: string) {
@@ -37,11 +40,19 @@ export function ApparatFavoritesItem({ dataItem }: any) {
 
 	function resetTimeOut() {
 		setTimeSet((i: any) => clearTimeout(i));
+		setIntervalTimeSet((i: any) => clearInterval(i));
 		onOpenChange();
+		setCount(5);
+	}
+	function countGo() {
+		if (count > 0) {
+			setCount((prev) => prev - 1);
+		}
 	}
 
 	function addToFavorites(id: number) {
 		onOpen();
+		setIntervalTimeSet(setInterval(countGo, 1000));
 		setTimeSet(setTimeout(() => dispatch(change(id)), 5000));
 	}
 
@@ -106,7 +117,7 @@ export function ApparatFavoritesItem({ dataItem }: any) {
 						className="justify-center hidden items-center gap-5
                                         sm:flex sm:justify-start"
 					>
-						<Button size="sm" variant="bordered" className="px-2 border">
+						{/* <Button size="sm" variant="bordered" className="px-2 border">
 							<Checkbox
 								size="sm"
 								classNames={{
@@ -116,7 +127,7 @@ export function ApparatFavoritesItem({ dataItem }: any) {
 							>
 								Сравнить
 							</Checkbox>
-						</Button>
+						</Button> */}
 
 						<div
 							className="text-sm hidden flex-col justify-end items-center 
@@ -234,13 +245,17 @@ export function ApparatFavoritesItem({ dataItem }: any) {
 						<>
 							<ModalBody>
 								<p>
-									Товар удалён из избранного
-									<Button
-										onClick={resetTimeOut}
-										className="ml-5 bg-cyan-700 text-white"
-									>
-										Отменить
-									</Button>
+									Товар будет удалён из избранного через
+									<strong className="ml-3 text-lg">{count}</strong>
+									<hr className="mt-2 mb-6" />
+									<div className="f-full text-center">
+										<Button
+											onClick={resetTimeOut}
+											className="ml-5 bg-cyan-700 text-white"
+										>
+											Отменить
+										</Button>
+									</div>
 								</p>
 							</ModalBody>
 						</>

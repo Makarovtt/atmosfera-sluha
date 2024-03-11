@@ -46,7 +46,7 @@ export function CatalogFindApparats({ titlePage = "Все аппараты" }: a
 	const [isLoading, setLoading] = useState(true);
 	const [dataApparats, setDataApparats] = useState<Iparams>();
 	const favorites = useAppSelector((state) => state.favoriteReducer);
-	console.log(favorites);
+
 	useEffect(() => {
 		async function getFavoritesApparat() {
 			const changeCheckAllData = {
