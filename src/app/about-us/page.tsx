@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 	description: "О магазине «Атмосфера слуха»",
 };
 
-export default function Home() {
+export default function AboutUs() {
 	return (
 		<>
 			<h1 className="text-center text-2xl text-cyan-700 font-bold mb-5 mt-10">

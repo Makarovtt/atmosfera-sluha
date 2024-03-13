@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { BookUser, Home } from "lucide-react";
 import { MyButton } from "../ui/my-button";
 import clsx from "clsx";
@@ -36,7 +37,9 @@ export function MenuMainBottom({ className }: any) {
 					<ModalCatalog />
 				</div>
 				<div className="">
-					<ModalServices />
+					<Suspense fallback={<></>}>
+						<ModalServices />
+					</Suspense>
 				</div>
 				<div className="">
 					<MyButton as={Link} href="/contacts" color="none" size="none-min">

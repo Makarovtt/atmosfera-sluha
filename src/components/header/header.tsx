@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { Suspense } from "react";
 import Logo from "@/public/images/header/Logotype.svg";
 import { Navigation, Phone } from "lucide-react";
 import { SearchHeader } from "./search-header";
@@ -28,7 +29,9 @@ export function Header() {
 					</Link>
 				</div>
 				<div className="text-lg w-full hidden lg-1000:flex justify-start gap-4 ml-12">
-					<MenuPages />
+					<Suspense fallback={<></>}>
+						<MenuPages />
+					</Suspense>
 				</div>
 				<div className="shrink-0 hidden lg-1000:block bg-white rounded-lg px-4 pt-1 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]">
 					<HeaderContacts />

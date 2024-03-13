@@ -1,9 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const items =
-	localStorage.getItem("basketReducer") !== null
-		? JSON.parse(localStorage.getItem("basketReducer") || "")
-		: [];
+// const items =
+// 	localStorage.getItem("basketReducer") !== null
+// 		? JSON.parse(localStorage.getItem("basketReducer") || "")
+// 		: [];
+
+let items = [];
+if (typeof window !== "undefined" && localStorage.getItem("basketReducer") !== null) {
+	items = JSON.parse(localStorage.getItem("basketReducer") || "");
+}
 
 type CountryState = [
 	{

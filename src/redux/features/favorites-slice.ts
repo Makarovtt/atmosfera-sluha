@@ -1,9 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const items =
-	localStorage.getItem("favorites") !== null
-		? JSON.parse(localStorage.getItem("favorites") || "")
-		: [];
+// const items =
+// 	localStorage.getItem("favorites") !== null
+// 		? JSON.parse(localStorage.getItem("favorites") || "")
+// 		: [];
+
+let items = [];
+if (typeof window !== "undefined" && localStorage.getItem("favorites") !== null) {
+	items = JSON.parse(localStorage.getItem("favorites") || "");
+}
 
 type CountryState = Number[];
 

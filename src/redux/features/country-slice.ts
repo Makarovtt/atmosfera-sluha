@@ -1,9 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const items =
-	localStorage.getItem("country") !== null
-		? JSON.parse(localStorage.getItem("country") || "")
-		: 2;
+// const items =
+// 	localStorage.getItem("country") !== null
+// 		? JSON.parse(localStorage.getItem("country") || "")
+// 		: 2;
+
+let items = 2;
+if (typeof window !== "undefined" && localStorage.getItem("country") !== null) {
+	items = JSON.parse(localStorage.getItem("country") || "");
+}
 
 type CountryState = {
 	value: number;
