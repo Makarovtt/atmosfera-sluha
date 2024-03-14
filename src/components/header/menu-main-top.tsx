@@ -28,37 +28,44 @@ export function MenuMainTop({ className }: Props) {
 		<div className="max-w-[1600px] mx-auto ">
 			<div
 				className={clsx(
-					"justify-between items-center transition",
+					"",
 					className,
 					header
-						? "bg-white max-w-full mx-auto py-4 z-30 fixed top-0 left-0 right-0 w-full md:px-10 2xl:mx-auto 4xl:mx-auto shadow-[0_1px_4px_rgba(0,0,0,.16)]"
-						: "bg-transparent md:mx-10 2xl:mx-20 4xl:mx-auto",
+						? "bg-white mx-auto py-4 z-30 fixed top-0 left-0 right-0 w-full md:px-10 2xl:mx-auto 4xl:mx-auto shadow-[0_1px_4px_rgba(0,0,0,.16)]"
+						: "bg-transparent",
 				)}
 			>
-				<div className="grow-0 justify-center shrink-0 w-[250px]">
-					<div
-						className="w-full bg-cyan-700 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)] rounded-lg
+				<div
+					className={clsx(
+						"justify-between items-center transition flex w-full",
+						header ? "max-w-[1500px] mx-auto" : "md:mx-10 2xl:mx-20 4xl:mx-auto",
+					)}
+				>
+					<div className="grow-0 justify-center shrink-0 w-[250px]">
+						<div
+							className="w-full bg-cyan-700 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)] rounded-lg
 				hover:bg-cyan-600 transition text-center"
-					>
-						<Button
-							href="/catalog"
-							as={Link}
-							size="lg"
-							color="primary"
-							radius="lg"
-							variant="flat"
-							className="w-full bg-transparent text-white"
 						>
-							Каталог
-						</Button>
+							<Button
+								href="/catalog"
+								as={Link}
+								size="lg"
+								color="primary"
+								radius="lg"
+								variant="flat"
+								className="w-full bg-transparent text-white"
+							>
+								Каталог
+							</Button>
+						</div>
 					</div>
-				</div>
 
-				<div className="hidden sm:block w-full mx-12 relative z-[50]">
-					<SearchHeader />
-				</div>
-				<div className="flex justify-end items-center gap-6 bg-white px-5 py-1 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)] rounded-lg">
-					<MenuTopButtonGroup />
+					<div className="hidden sm:block w-full mx-12 relative z-[50]">
+						<SearchHeader />
+					</div>
+					<div className="flex justify-end items-center gap-6 bg-white px-5 py-1 shadow-[0_1px_2px_0_rgba(0,0,0,0.16)] rounded-lg">
+						<MenuTopButtonGroup />
+					</div>
 				</div>
 			</div>
 		</div>

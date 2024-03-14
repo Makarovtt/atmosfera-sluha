@@ -50,7 +50,7 @@ export function ApparatCard({ dataInfo }: any) {
 							`, Степень потери слуха ${dataItem.level_hearing_loss}`}
 					</div>
 					<div className="flex justify-end gap-2">
-						<Button size="sm" variant="bordered" className="px-2 border">
+						{/* <Button size="sm" variant="bordered" className="px-2 border">
 							<Checkbox
 								size="sm"
 								classNames={{
@@ -60,7 +60,7 @@ export function ApparatCard({ dataInfo }: any) {
 							>
 								Сравнить
 							</Checkbox>
-						</Button>
+						</Button> */}
 						<Button isIconOnly size="sm">
 							<Share2 size={16} />
 						</Button>

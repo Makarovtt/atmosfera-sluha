@@ -17,7 +17,6 @@ interface Iapparats {
 export function BusketHeader({ arrDataApparats }: any) {
 	const dispatch = useAppDispatch();
 	let sum: number = 0;
-	console.log(arrDataApparats);
 	return (
 		<>
 			<div className="px-1 py-2">
@@ -43,11 +42,16 @@ export function BusketHeader({ arrDataApparats }: any) {
 							<hr className="my-5" />
 							<div className="flex justify-between items-center text-base">
 								<div>
-									Итого: <strong>{modificationPriceView(sum)}</strong>
+									{/* Итого: <strong>{modificationPriceView(sum)}</strong> */}
 								</div>
 								<div className="flex justify-end items-center gap-3">
 									<div>
-										<Button size="sm" className="bg-gray-300 text-gray-600">
+										<Button
+											as={Link}
+											href="/order"
+											size="sm"
+											className="bg-gray-300 text-gray-600"
+										>
 											Оформить
 										</Button>
 									</div>

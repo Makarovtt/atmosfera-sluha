@@ -1,11 +1,12 @@
 "use client";
 
-import { Button, Link } from "@nextui-org/react";
-
 import { clearBasket } from "@/redux/features/basket-slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { BaksetItemApparat } from "./basket-item-apparat";
 import { modificationPriceView } from "@/components/ui/modificationPriceView";
+import Loader from "@/public/preloader-img.svg";
+import { useMemo, useState } from "react";
+import Image from "next/image";
+import { BasketPageList } from "./basket-page-list";
 
 interface Iapparats {
 	id: number;
@@ -16,10 +17,18 @@ interface Iapparats {
 }
 
 export default function BasketComponent() {
+	const [isLoading, setLoading] = useState(true);
+	const [issetApparats, setIssetApparats] = useState(false);
 	const dispatch = useAppDispatch();
 	const arrDataApparats = useAppSelector((state) => state.basketReducer);
+	console.log(arrDataApparats.length);
+	useMemo(() => {
+		if (arrDataApparats.length) {
+			setLoading(false);
+			setIssetApparats(true);
+		}
+	}, [arrDataApparats]);
 
-	let sum: number = 0;
 	return (
 		<>
 			<h1 className="text-2xl font-semibold mb-5">Корзина</h1>
@@ -27,34 +36,13 @@ export default function BasketComponent() {
 				className="w-full min-w-40 p-3 border border-slate-200 rounded-xl bg-white pt-6
                             shadow-[0_1px_2px_0_rgba(0,0,0,0.16)]"
 			>
-				{arrDataApparats.length ? (
-					<>
-						<div>
-							{arrDataApparats.map((item) => {
-								sum += Number(item.price * item.quantity);
-								return <BaksetItemApparat key={item.id} item={item} />;
-							})}
-						</div>
-						<div className="flex justify-between items-center text-base">
-							<div>
-								Итого: <strong>{modificationPriceView(sum)}</strong>
-							</div>
-							<div className="flex justify-end items-center gap-3">
-								<div>
-									<Button
-										as={Link}
-										href="/order"
-										size="sm"
-										className="bg-cyan-700 text-white"
-									>
-										Оформить
-									</Button>
-								</div>
-							</div>
-						</div>
-					</>
-				) : (
-					<p>Корзина пуста</p>
+				{isLoading ? (
+					<div className="flex justify-center items-center w-full h-full">
+						<Image src={Loader} alt="" />
+					</div>
+				) : null}
+				{issetApparats && (
+					<BasketPageList arrDataApparats={arrDataApparats} isLoading={isLoading} />
 				)}
 			</div>
 		</>

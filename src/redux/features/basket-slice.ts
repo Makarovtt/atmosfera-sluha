@@ -17,6 +17,7 @@ type CountryState = [
 		image: string;
 		price: number;
 		title: string;
+		href: string;
 	},
 ];
 
@@ -37,6 +38,7 @@ export const basket = createSlice({
 					image: idApparat.picture,
 					price: idApparat.price,
 					title: idApparat.title,
+					href: `/catalog/${idApparat.vendor}/${idApparat.family}/${idApparat.family}/${idApparat.undfamily ? idApparat.undfamily : "noundfamily"}/${idApparat.title}`,
 				};
 				state.push(tempObj);
 			}

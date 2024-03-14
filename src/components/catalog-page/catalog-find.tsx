@@ -84,11 +84,11 @@ export function CatalogFindApparats({ titlePage = "Все аппараты" }: a
 						return <ApparatFavoritesItem key={item.id} dataItem={item} />;
 					})
 				) : (
-					<CatalogFavoritesEmpty />
+					<CatalogFavoritesEmpty isLoading={isLoading} />
 				)}
 			</div>
 			<div className="flex justify-center mt-10">
-				{allApparats && (
+				{allApparats && allApparats > 20 && (
 					<Pagination
 						total={countAllPages(allApparats)}
 						initialPage={getPage}

@@ -89,7 +89,7 @@ export function ModalCheckOrder({
 										</div>
 										<div className="flex justify-between items-center text-base">
 											<div>
-												Итого: <strong>{modificationPriceView(sum)}</strong>
+												{/* Итого: <strong>{modificationPriceView(sum)}</strong> */}
 											</div>
 										</div>
 									</>

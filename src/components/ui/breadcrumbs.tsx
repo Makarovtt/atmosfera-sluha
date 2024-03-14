@@ -34,7 +34,7 @@ export function BreadCrumbs({ flag = "catalog", brand, family, undfamily, title 
 				{family && (
 					<BreadcrumbItem href={`/catalog/${brand}/${family}`}>{family}</BreadcrumbItem>
 				)}
-				{undfamily && (
+				{undfamily && undfamily !== "noundfamily" && (
 					<BreadcrumbItem href={`/catalog/${brand}/${family}/${undfamily}`}>
 						{undfamily}
 					</BreadcrumbItem>

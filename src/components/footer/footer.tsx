@@ -70,25 +70,35 @@ export function Footer() {
 						<div>
 							<div className="text-white text-xl font-semibold">СТРАНИЦЫ</div>
 							<ul className="flex flex-col gap-3 mt-5">
-								<li className="text-white font-light text-base">Главная</li>
-								<li className="text-white font-light text-base">О компании</li>
-								<li className="text-white font-light text-base">Контакты</li>
+								<li className="text-white font-light text-base">
+									<Link href="/">Главная</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/about-us">О компании</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/contacts">Контакты</Link>
+								</li>
 							</ul>
 						</div>
 
 						<div>
 							<div className="text-white text-xl font-semibold">УСЛУГИ</div>
 							<ul className="flex flex-col gap-3 mt-5">
-								<li className="text-white font-light text-base">Проверка слуха</li>
-								<li className="text-white font-light text-base">Выезд на дом</li>
 								<li className="text-white font-light text-base">
-									Бесплатная консультация
+									<Link href="/testirovanie">Проверка слуха</Link>
 								</li>
 								<li className="text-white font-light text-base">
-									Компенсация от ФСС
+									<Link href="/dostavka">Выезд на дом</Link>
 								</li>
 								<li className="text-white font-light text-base">
-									Беспроцентная рассрочка
+									<Link href="/consultaciya">Бесплатная консультация</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/kompensatciya">Компенсация от ФСС</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/rassrochka">Беспроцентная рассрочка</Link>
 								</li>
 							</ul>
 						</div>
@@ -97,13 +107,23 @@ export function Footer() {
 							<div className="text-white text-xl font-semibold">ПРОДУКЦИЯ</div>
 							<ul className="flex flex-col gap-3 mt-5">
 								<li className="text-white font-light text-base">
-									Слуховые аппараты
+									<Link href="/catalog">Католог слуховых аппаратов</Link>
 								</li>
-								<li className="text-white font-light text-base">AudiFon</li>
-								<li className="text-white font-light text-base">Widex</li>
-								<li className="text-white font-light text-base">Signia</li>
-								<li className="text-white font-light text-base">Bernafon</li>
-								<li className="text-white font-light text-base">A&M</li>
+								<li className="text-white font-light text-base">
+									<Link href="/catalog/AudiFon">AudiFon</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/catalog/Widex">Widex</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/catalog/Signia">Signia</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/catalog/Bernafon">Bernafon</Link>
+								</li>
+								<li className="text-white font-light text-base">
+									<Link href="/catalog/A&M">A&M</Link>
+								</li>
 							</ul>
 						</div>
 					</div>

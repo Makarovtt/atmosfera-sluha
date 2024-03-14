@@ -40,9 +40,23 @@ export function MenuTopButtonGroup() {
 					content={<BusketHeader arrDataApparats={basket} />}
 					placement="bottom-start"
 				>
-					<Button isIconOnly className="bg-transparent text-gray-500 hover:text-gray-900">
-						<ShoppingCart size={30} className="stroke-1" />
-					</Button>
+					{basket.length ? (
+						<Button
+							isIconOnly
+							as={Link}
+							href="/basket"
+							className="bg-transparent text-gray-500 hover:text-gray-900"
+						>
+							<ShoppingCart size={30} className="stroke-1" />
+						</Button>
+					) : (
+						<Button
+							isIconOnly
+							className="bg-transparent text-gray-500 hover:text-gray-900"
+						>
+							<ShoppingCart size={30} className="stroke-1" />
+						</Button>
+					)}
 				</Tooltip>
 			</Badge>
 		</>

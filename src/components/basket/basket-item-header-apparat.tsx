@@ -28,13 +28,14 @@ export function BasketItemHeader({ item }: any) {
 						/>
 					</div>
 					<div className="text-sm w-6/12">{item.title}</div>
-					<div className="text-lg w-5/12 font-semibold flex justify-end items-center gap-2 flex-nowrap">
+					<div className="text-sm w-5/12 flex justify-end items-center gap-2 flex-nowrap">
 						{item.quantity > 1 && (
 							<div className="text-gray-400 font-normal text-base">
 								x {item.quantity}
 							</div>
 						)}
-						{modificationPriceView(price)}
+						Цена по запросу
+						{/* {modificationPriceView(price)} */}
 					</div>
 					<div className="w-1/12">
 						<Trash2

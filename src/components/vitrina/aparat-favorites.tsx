@@ -103,7 +103,7 @@ export function ApparatFavoritesItem({ dataItem }: any) {
 					<Link
 						className="text-gray-600 text-base font-medium mt-3 hover:text-cyan-700
                                     sm:text-lg "
-						href={`/catalog/${dataItem.vendor}/${dataItem.family}/${dataItem.undfamily}/${dataItem.title}`}
+						href={`/catalog/${dataItem.vendor}/${dataItem.family}/${dataItem.undfamily ? dataItem.undfamily : "noundfamily"}/${dataItem.title}`}
 					>
 						{dataItem.title}
 						{dataItem.type_box && `, ${dataItem.type_box}`}
@@ -170,7 +170,8 @@ export function ApparatFavoritesItem({ dataItem }: any) {
                                     h-[40px] flex items-center justify-center px-2
                             sm:text-right sm:py-1 sm:mt-3 sm:mb-2 sm:text-xl sm:w-full sm:justify-end sm:bg-transparent"
 					>
-						{modificationPriceView(dataItem.price)}
+						Цена по запросу
+						{/* {modificationPriceView(dataItem.price)} */}
 					</div>
 					<div
 						className="flex justify-end items-center gap-1 w-3/5 

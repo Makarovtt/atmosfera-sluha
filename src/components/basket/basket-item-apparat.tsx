@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -56,7 +56,14 @@ export function BaksetItemApparat({ item }: any) {
 						/>
 					</div>
 					<div className="text-base w-6/12 flex flex-col justify-between items-start h-full gap-6">
-						{item.title}
+						<Link
+							className="text-gray-600 text-base font-medium mt-3 hover:text-cyan-700
+                                    sm:text-lg "
+							href={item.href}
+						>
+							{" "}
+							{item.title}
+						</Link>
 						<div className="flex flex-row justify-start gap-5 items-center">
 							<Button
 								isIconOnly
@@ -85,7 +92,8 @@ export function BaksetItemApparat({ item }: any) {
 						{item.quantity > 1 && (
 							<div className="text-gray-400">x {item.quantity}</div>
 						)}
-						{modificationPriceView(item.quantity * item.price)}
+						Цена по запросу
+						{/* {modificationPriceView(item.quantity * item.price)} */}
 					</div>
 					<div className="w-1/12">
 						<Button isIconOnly onPress={onOpen} variant="light" className="group">
