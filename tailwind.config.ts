@@ -12,6 +12,23 @@ const config: Config = {
 	theme: {
 		extend: {
 			color: "red",
+			keyframes: {
+				animationbutton: {
+					"10%": { boxShadow: "0 0 0 0 #4af171, 0 0 0 0 rgba(140, 254, 167, 0.7)" },
+					"40%": {
+						boxShadow:
+							"0 0 0 13.62667px rgba(74, 241, 113, 0), 0 0 0 6.81333px rgba(140, 254, 167, 0.7)",
+					},
+					"80%": {
+						boxShadow:
+							"0 0 0 27.25333px rgba(74,241,113,0), 0 0 0 13.62667px rgba(140, 254, 167, 0)",
+					},
+					"100%": {
+						boxShadow:
+							"0 0 0 34.06667px rgba(74, 241, 113, 0), 0 0 0 27.25333px rgba(140, 254, 167, 0)",
+					},
+				},
+			},
 		},
 		screens: {
 			"min-screen": "320px",

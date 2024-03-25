@@ -67,7 +67,8 @@ export function ApparatCard({ dataInfo }: any) {
 					</div>
 					<div className="block justify-start gap-3 items-center lg:flex lg:flex-row">
 						<div className="px-4 py-3 text-right rounded-xl bg-cyan-50 font-bold text-2xl text-gray-500 lg:w-8/12">
-							{modificationPriceView(dataItem.price)}
+							{/* {modificationPriceView(dataItem.price)} */}
+							Цена по запросу
 						</div>
 						<div className="flex justify-end items-center gap-1 my-2 lg:justify-center">
 							<Button

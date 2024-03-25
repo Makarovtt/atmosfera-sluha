@@ -8,6 +8,7 @@ import { CatalogMain } from "@/components/catalog-main/catalog-main";
 import { MenuMain } from "@/components/header/menu-main";
 import { Providers } from "@/redux/provider";
 import { UIProvider } from "./ui-provider";
+import SocialButton from "@/components/button-contact-us/botton-contact-us";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 						</div>
 					</section>
 					<Footer />
+					<SocialButton />
 				</Providers>
 			</body>
 		</html>
